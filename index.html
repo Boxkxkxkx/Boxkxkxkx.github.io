@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            color: #1F4918; 
+            background-color: #f2f2f2; 
+            padding: 15px; 
+        } 
+ 
+        h1 { 
+            text-align: center; 
+            font-size: 2em; 
+            text-shadow: 2px 2px 4px #97E08A; 
+        } 
+ 
+        img { 
+            width: 280px; 
+            height: 163px; 
+            display: block; 
+            margin: 0 auto; 
+        } 
+ 
+        input[type=button]:hover { 
+            background-color: #45A234; 
+        } 
+ 
+        .bordered { 
+            border: 3px solid #1F4918; 
+            padding: 15px; 
+            margin: 10px 0; 
+        } 
+    </style> 
+    <title>Резюме</title> 
+</head> 
+<body> 
+    <h1>Мое резюме</h1> 
+    <img src="https://media.tenor.com/images/071fa1f5449efb934bc549d364ca623f/tenor.gif" alt="Фото"> 
+    <div id="name" class="bordered">Имя: <span id="firstName">Лягушонок</span></div> 
+    <div id="surname" class="bordered">Фамилия: <span id="lastName">Пепе</span></div> 
+    <div class="bordered">Возраст: <span id="age">30</span></div> 
+    <input type="text" id="newLastName" placeholder="Новая фамилия"> 
+    <input type="button" value="Изменить фамилию" onclick="changeLastName()"> 
+    <input type="button" value="Изменить цвет фона" onclick="changeBgColor()"> 
+ 
+    <script> 
+        function changeLastName() { 
+            var newLastName = document.getElementById('newLastName').value; 
+            if (newLastName) { 
+                document.getElementById('lastName').textContent = newLastName; 
+            } 
+        } 
+ 
+        function changeBgColor() { 
+            var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16); 
+            document.body.style.backgroundColor = randomColor; 
+        } 
+    </script> 
+</body> 
+</html>

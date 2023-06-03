@@ -1,0 +1,101 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #1F4918;
+            background-color: #f2f2f2;
+            padding: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px #97E08A;
+        } 
+ 
+        img { 
+            width: 280px; 
+            height: 163px; 
+            display: block; 
+            margin: 0 auto; 
+        } 
+ 
+        input[type=button]:hover { 
+            background-color: #ddd; 
+        }
+
+        .bordered {
+            border: 3px solid #1F4918;
+            padding: 15px;
+            margin: 10px 0;
+        } 
+ 
+        #success { 
+            display: none; 
+            color: green; 
+            margin-top: 15px; 
+        } 
+ 
+        .checkbox { 
+            margin: 10px 0; 
+        } 
+    </style> 
+    <title>Резюме</title> 
+</head> 
+<body>
+
+    <h1>Мое резюме</h1>
+    <img src="https://media.tenor.com/images/071fa1f5449efb934bc549d364ca623f/tenor.gif" alt="Фото">
+    <div id="name" class="bordered">Имя: <span id="firstName">Лягушонок</span></div>
+    <div id="surname" class="bordered">Фамилия: <span id="lastName">Пепе</span></div>
+    <div class="bordered">Возраст: <span id="age">30</span></div>
+    <div id="gender" class="bordered">Пол: <span id="Gender">М</span></div>
+
+    <div id="form">
+        <input type="text" id="newFirstName" placeholder="Новое имя">
+        <input type="text" id="newAge" placeholder="Новый возраст">
+        <input type="text" id="newGender" placeholder="Новый пол">
+        <div class="checkbox"><label><input type="checkbox" id="checkbox"> Я согласен с условиями СРЕДЫ, мои чуваки</label></div>
+        <textarea id="text" placeholder="Ваш комментарий"></textarea>
+        <input type="button" value="Заполнить анкету" onclick="fillForm()">
+    </div>
+    <div id="success">Анкета заполнена!</div>
+
+    <script>
+        function fillForm() {
+            var newFirstName = document.getElementById('newFirstName').value;
+            var newAge = document.getElementById('newAge').value;
+            var newGender = document.getElementById('newGender').value;
+            var checkbox = document.getElementById('checkbox').checked;
+
+            if (!newFirstName.match(/^[a-zA-Zа-яА-Я]+$/)) {
+                alert('Имя должно содержать только буквы');
+                return;
+            }
+
+            if (!newAge.match(/^[0-9]+$/) || newAge <= 0) {
+                alert('Возраст должен быть положительным числом');
+                return;
+            }
+
+            if (!newGender.match('Ж' || 'М' || 'Жабка')) {
+                alert('пол – М или Ж или Жабка!');
+                return;
+            }
+
+            if (!checkbox) {
+                alert('Необходимо согласиться с условиями');
+                return;
+            }
+
+            document.getElementById('firstName').textContent = newFirstName;
+            document.getElementById('age').textContent = newAge;
+            document.getElementById('Gender').textContent = newGender;
+            document.getElementById('form').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+        }
+    </script>
+</body> 
+</html>
